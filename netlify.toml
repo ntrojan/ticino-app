@@ -1,0 +1,21 @@
+# Deploy statico su Netlify.
+#
+# I dati (GeoJSON) sono generati in locale dalla pipeline e NON stanno nel repo,
+# quindi NON si fa build su Netlify: si costruisce in locale e si pubblica dist/.
+#
+# Deploy:
+#   cd frontend && npm run build
+#   python ../scripts/05_pack_for_deploy.py   # impacchetta i dati in frontend/dist/data
+#   netlify deploy --prod --dir=frontend/dist
+#
+# (oppure trascina la cartella frontend/dist su app.netlify.com)
+
+[build]
+  publish = "frontend/dist"
+  command = "echo 'build e packaging dei dati avvengono in locale'"
+
+# Cache lunga per i dati statici (isocrone/POI cambiano solo a un nuovo calcolo)
+[[headers]]
+  for = "/data/*"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"

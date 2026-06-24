@@ -1,0 +1,17 @@
+# TicinoTP — dipendenze Python
+# pip install -r requirements.txt
+
+# GIS
+geopandas>=0.14
+shapely>=2.0
+rasterio>=1.3
+
+# GTFS
+gtfs-kit>=6.0
+
+# HTTP / API
+requests>=2.31
+
+# Dati
+pandas>=2.0
+numpy>=1.26
